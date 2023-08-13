@@ -79,7 +79,7 @@ def load_and_examine_data(filepath: str) -> pd.DataFrame:
         return None
 
 # Utilize the function
-data = load_and_examine_data("../input/weather-dataset-rattle-package/weatherAUS.csv")
+data = load_and_examine_data("/content/weatherAUS.csv")
 
 
 
@@ -219,7 +219,7 @@ def remove_outliers(features: pd.DataFrame, bounds: Dict[str, Tuple[float, float
     """
     for feature, (lower, upper) in bounds.items():
         features = features[(features[feature] > lower) & (features[feature] < upper)]
-    return features
+        return features
 
 
 # Apply categorical feature encoding
@@ -229,6 +229,7 @@ data = encode_categorical_features(data, categorical_cols)
 # Select features
 features_cols = data.columns.difference(['RainTomorrow', 'Date','day', 'month'])
 features = data[features_cols]
+target = data["RainTomorrow"]
 
 # Scale features
 features = scale_features(features)
@@ -252,10 +253,11 @@ outlier_bounds = {
     "Temp9am": (-2, 2.3),
     "Temp3pm": (-2, 2.3)
 }
+
 features = remove_outliers(features, outlier_bounds)
 
 # Assign target variable
-#features["RainTomorrow"] = target
+features["RainTomorrow"] = target
 
 ## MODEL BUILDING
 
@@ -279,6 +281,7 @@ class Preprocessor:
     def transform(self, data):
         """Preprocess the data"""
         X = data.drop(["RainTomorrow"], axis=1)
+        #X = data.drop(["RainTomorrow"])
         y = data["RainTomorrow"]
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
         return X_train, X_test, y_train, y_test
@@ -360,7 +363,7 @@ class Main:
     def run(self):
         """Execute the pipeline"""
         # Load the features data
-        features = pd.read_csv("your_data.csv")
+        #features = pd.read_csv("/content/weatherAUS.csv")
 
         # Preprocess the data
         preprocessor = Preprocessor()
@@ -384,5 +387,3 @@ class Main:
 if __name__ == "__main__":
     main = Main()
     main.run()
-
-
