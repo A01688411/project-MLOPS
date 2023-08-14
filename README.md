@@ -31,7 +31,7 @@ In addition to the above, we will work with the code to apply refactorization, d
         ```
     * Install the packages
         ```bash
-        pip install project-MLOPS/requirements.txt
+        pip install -r requirements.txt
         ```
 
 
