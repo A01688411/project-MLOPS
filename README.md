@@ -17,4 +17,21 @@ In this project we will show we will work with a notebook downloaded from the Ka
 In addition to the above, we will work with the code to apply refactorization, docstrings, annotation and some other best practices in a correct management of a MLOps project. The project going to up to github platform for colaborate with others parthers if that is necesary.
 
 
+# Steps to run project in windows
+## Activate virtual environment
+1. Create a virtual environment with `Python 3.10+`
+    * Create venv
+        ```bash
+        python3.10 -m venv venv_project
+        ```
+
+    * Activate the virtual environment
+        ```
+        venv_project\Scripts\activate
+        ```
+    * Install the packages
+        ```bash
+        pip install project-MLOPS/requirements.txt
+        ```
+
 
