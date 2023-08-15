@@ -27,5 +27,9 @@ Pre-Commits are a software development practice that consists of performing a se
 
     exclude: '\.venv|\.git|\.tox|\.mypy_cache|\.pytest_cache|\.eggs|build|dist'
     ```
-
+4. Save the .pre-commit-config.yaml file in the root directory of your project.
+5. Run the following command at the command line to configure the hooks in your repository:
+    ```bash
+       pre-commit install
+    ```
 
