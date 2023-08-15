@@ -1,17 +1,30 @@
 repos:
-    - repo: https://github.com/psf/black
-    rev: stable
-    hooks:
-        - id: black
+#- repo: https://github.com/pre-commit/mirrors-autopep8
+#  rev: v2.0.2
+#  hooks:
+#    - id: autopep8
 
-    - repo: https://github.com/PyCQA/isort
-    rev: 5.9.3
-    hooks:
-        - id: isort
+#- repo: https://github.com/PyCQA/flake8
+#  rev: 6.1.0
+#  hooks:
+#  - id: flake8
+#    args: [--ignore=E501]
 
-    - repo: https://github.com/PyCQA/flake8
-    rev: 3.9.2
-    hooks:
-        - id: flake8
+- repo: https://github.com/pycqa/isort
+  rev: 5.12.0 # Specify isort version
+  hooks:
+    - id: isort
+      name: isort (python)
+      args: [--filter-files]
 
-exclude: '\.venv|\.git|\.tox|\.mypy_cache|\.pytest_cache|\.eggs|build|dist'
+- repo: https://github.com/pycqa/pylint
+  rev: v3.0.0a6 # Specify with the desired version of pylint
+  hooks:
+    - id: pylint
+      name: pylint
+      args: [--disable=all, --enable=W0614]
+
+- repo: https://github.com/PyCQA/autoflake
+  rev:  v2.2.0
+  hooks:
+    - id: autoflake

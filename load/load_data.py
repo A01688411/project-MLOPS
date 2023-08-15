@@ -1,14 +1,15 @@
 
 # Import necessary libraries
-import numpy as np  # For linear algebra
-import pandas as pd  # For data processing
 import os  # For operating system dependent functionalities
 
 import matplotlib.pyplot as plt  # For data visualization
+import numpy as np  # For linear algebra
+import pandas as pd  # For data processing
 import seaborn as sns  # For data visualization
 from sklearn import preprocessing  # For preprocessing data
+from sklearn.model_selection import \
+    train_test_split  # For splitting the data into training and test datasets
 from sklearn.preprocessing import StandardScaler  # For standardizing features
-from sklearn.model_selection import train_test_split  # For splitting the data into training and test datasets
 
 
 # LOADING DATA
@@ -46,6 +47,7 @@ def load_and_examine_data(filepath: str) -> pd.DataFrame:
 
 # DATA VISUALIZATION AND CLEANING
 from typing import List
+
 
 def plot_count_and_correlation(data: pd.DataFrame, target_col: str, color_palette: List[str]) -> None:
     """

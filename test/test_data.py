@@ -1,8 +1,9 @@
 import os
-import pytest
-import pandas as pd
 
+import pandas as pd
+import pytest
 from sklearn.pipeline import Pipeline
+
 
 def does_csv_file_exist(file_path):
     """
@@ -16,6 +17,7 @@ def does_csv_file_exist(file_path):
     """
     return os.path.isfile(file_path)
 
+
 def test_csv_file_existence():
     """
     Test case to check if the CSV file exists.
@@ -23,7 +25,6 @@ def test_csv_file_existence():
     # Provide the path to your CSV file that needs to be tested
     os.chdir('C:/Users/fzavala/Documents/GitHub/project-MLOPS')
     csv_file_path = "./data/retrieved_data.csv"
-    
 
     # Call the function to check if the CSV file exists
     file_exists = does_csv_file_exist(csv_file_path)

@@ -1,6 +1,8 @@
+from typing import Dict, List, Tuple
+
 import pandas as pd
-from typing import List, Dict, Tuple
 from sklearn.preprocessing import LabelEncoder, StandardScaler
+
 
 def encode_categorical_features(data: pd.DataFrame, categorical_cols: List[str]) -> pd.DataFrame:
     """
@@ -48,5 +50,6 @@ def remove_outliers(features: pd.DataFrame, bounds: Dict[str, Tuple[float, float
     pd.DataFrame: The DataFrame without outliers.
     """
     for feature, (lower, upper) in bounds.items():
-        features = features[(features[feature] > lower) & (features[feature] < upper)]
+        features = features[(features[feature] > lower) &
+                            (features[feature] < upper)]
         return features

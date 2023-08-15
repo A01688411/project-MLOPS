@@ -7,23 +7,26 @@ The script uses the Kaggle Python Docker image, and the input data files
 should be available in the read-only directory "../input/".
 """
 
-# Import necessary libraries
-import numpy as np  # For linear algebra
-import pandas as pd  # For data processing
 import os  # For operating system dependent functionalities
 
 import matplotlib.pyplot as plt  # For data visualization
+# Import necessary libraries
+import numpy as np  # For linear algebra
+import pandas as pd  # For data processing
 import seaborn as sns  # For data visualization
-from sklearn import preprocessing  # For preprocessing data
-from sklearn.preprocessing import StandardScaler  # For standardizing features
-from sklearn.model_selection import train_test_split  # For splitting the data into training and test datasets
-
-from keras.layers import Dense, BatchNormalization, Dropout, LSTM
+from keras.layers import LSTM, BatchNormalization, Dense, Dropout
 from keras.models import Sequential
-from keras.utils import to_categorical
 from keras.optimizers import Adam
-from tensorflow.keras import regularizers  # For implementing regularization in the model
-from sklearn.metrics import precision_score, recall_score, confusion_matrix, classification_report, accuracy_score, f1_score  # for evaluating model performance
+from keras.utils import to_categorical
+from sklearn import preprocessing  # For preprocessing data
+from sklearn.metrics import (  # for evaluating model performance
+    accuracy_score, classification_report, confusion_matrix, f1_score,
+    precision_score, recall_score)
+from sklearn.model_selection import \
+    train_test_split  # For splitting the data into training and test datasets
+from sklearn.preprocessing import StandardScaler  # For standardizing features
+from tensorflow.keras import \
+    regularizers  # For implementing regularization in the model
 
 # Prepare a random seed for reproducibility
 np.random.seed(0)
@@ -85,6 +88,7 @@ data = load_and_examine_data("/content/weatherAUS.csv")
 
 # DATA VISUALIZATION AND CLEANING
 from typing import List
+
 
 def plot_count_and_correlation(data: pd.DataFrame, target_col: str, color_palette: List[str]) -> None:
     """
@@ -168,9 +172,11 @@ visualize_over_years(data)
 
 ## DATA PREPROCESSING
 
+from typing import Dict, List, Tuple
+
 import pandas as pd
-from typing import List, Dict, Tuple
 from sklearn.preprocessing import LabelEncoder, StandardScaler
+
 
 def encode_categorical_features(data: pd.DataFrame, categorical_cols: List[str]) -> pd.DataFrame:
     """
@@ -261,16 +267,17 @@ features["RainTomorrow"] = target
 
 ## MODEL BUILDING
 
-import pandas as pd
-import numpy as np
-import seaborn as sns
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, classification_report
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
-from tensorflow.keras.optimizers import Adam
 from tensorflow.keras import callbacks
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.optimizers import Adam
+
 
 class Preprocessor:
     """Custom transformer for data preprocessing tasks"""
