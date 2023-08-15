@@ -3,12 +3,12 @@ Pre-Commits are a software development practice that consists of performing a se
 
 ## Steps to activate Pre-Commits
 1. Make sure you have pre-commit installed in your development environment. You can install it using the following command on the command line:
-        ```
+        ```bash
            pip install pre-commit
         ```
 2. In the root directory of your project, create a file called .pre-commit-config.yaml.
 3. Open the .pre-commit-config.yaml file and add the following content:
-        ```
+        ```bash
    repos:
      - repo: https://github.com/psf/black
        rev: stable
