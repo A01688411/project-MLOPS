@@ -16,7 +16,7 @@ def encode_categorical_features(data: pd.DataFrame, categorical_cols: List[str])
     label_encoder = LabelEncoder()
     for col in categorical_cols:
         data[col] = label_encoder.fit_transform(data[col])
-        return data
+    return data
 
 
 def scale_features(features: pd.DataFrame) -> pd.DataFrame:

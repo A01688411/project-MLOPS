@@ -5,7 +5,7 @@ preprocessing the data, building the model.
 
 """
 # Import necessary libraries
-#import pandas as pd
+import pandas as pd
 import numpy as np  # For linear algebra
 from load.load_data import load_and_examine_data
 from load.load_data import plot_count_and_correlation
@@ -18,6 +18,11 @@ from preprocess.preprocess_data import  remove_outliers
 from train.train_data import Preprocessor
 from train.train_data import ModelBuilder
 from train.train_data import Evaluator
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras import callbacks
 
 #from typing import List, Dict, Tuple
 #from sklearn.preprocessing import LabelEncoder, StandardScaler
@@ -47,12 +52,21 @@ categorical_cols = [col for col in data.columns if data[col].dtype == 'object']
 data = encode_categorical_features(data, categorical_cols)
 
 # Select features
-features_cols = data.columns.difference(['RainTomorrow', 'Date','day', 'month'])
+features_cols = data.columns.difference(['RainTomorrow', 'Date','day', 'month', 'WindDir9am', 'WindDir3pm', 'WindGustDir', 'RainToday'])
 features = data[features_cols]
-target = data["RainTomorrow"]
+
+# Create a mapping dictionary
+mapping = {'SI': 1, 'NO': 0}  # Add more mappings as needed
+# Use the map() function to convert the string field to 0 and 1
+data["RainTomorrow2"] = data['RainTomorrow'].map(mapping)
+
+target = data["RainTomorrow2"]
+#target = data["RainTomorrow"]
+
 
 # Scale features
 features = scale_features(features)
+
 
 # Remove outliers
 outlier_bounds = {
@@ -79,9 +93,7 @@ features = remove_outliers(features, outlier_bounds)
 # Assign target variable
 features["RainTomorrow"] = target
 
-
 ## MODEL BUILDING
-
 class Main:
     """Main function to coordinate the pipeline"""
 
@@ -110,7 +122,7 @@ class Main:
         evaluator.plot_accuracy(history)
 
         # Evaluate the model
-        evaluator.evaluate_model(model, X_test, y_test)
+        #evaluator.evaluate_model(model, X_test, y_test)
 
 if __name__ == "__main__":
     main = Main()

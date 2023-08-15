@@ -7,7 +7,7 @@ This dataset contains about 10 years of daily weather observations from many loc
 RainTomorrow is the target variable to predict. It means -- did it rain the next day, Yes or No? This column is Yes if the rain for that day was 1mm or more.
 
 ## Dataset Information
-- Number of Instances: 127,536
+- Number of Instances: 145,460
 - Number of Features: 23
 - Target Variable: RainTomorrow
 
