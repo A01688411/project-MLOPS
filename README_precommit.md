@@ -6,7 +6,7 @@ Pre-Commits are a software development practice that consists of performing a se
     ```bash
     pip install pre-commit
     ```
-2. In the root directory of your project, create a file called .pre-commit-config.yaml.
+2. In the root directory of your project, create a file called ´´´.pre-commit-config.yaml´´´.
 3. Open the .pre-commit-config.yaml file and add the following content:
     ```bash
     repos:
