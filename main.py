@@ -122,7 +122,7 @@ class Main:
         evaluator.plot_accuracy(history)
 
         # Evaluate the model
-        #evaluator.evaluate_model(model, X_test, y_test)
+        ##evaluator.evaluate_model(model, X_test, y_test)
 
 if __name__ == "__main__":
     main = Main()
